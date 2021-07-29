@@ -7,26 +7,19 @@ import { Component } from '@angular/core';
 })
 export class UserComponent {
   //Properties
-  firstName = 'John';
+  firstName = 'Ahmed';
   lastName = 'doe';
   age = 30;
+  address = {
+    street: '50 Main st',
+    city: 'Boston',
+    state: 'MA',
+  };
 
   // Methods
-  constructor() {
-    // this.sayHello();
-    console.log(this.age);
-    this.hasBirthday();
-    console.log(this.age);
-  }
+  constructor() {}
 
-  sayHello() {
-    console.log(`
-      Hello ${this.firstName}
-      ${this.lastName}
-       `);
-  }
-
-  hasBirthday() {
-    this.age += 1;
+  showAge() {
+    return this.age;
   }
 }
