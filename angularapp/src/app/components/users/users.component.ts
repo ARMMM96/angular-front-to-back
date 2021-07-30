@@ -7,9 +7,12 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  users: User[];
+  users: User[] = [];
+  showExtended: boolean = true;
+  loaded: boolean = false;
 
-  constructor() {
+  constructor() {}
+  ngOnInit(): void {
     this.users = [
       {
         firstName: 'John',
@@ -42,21 +45,22 @@ export class UsersComponent implements OnInit {
         },
       },
     ];
-  }
-  ngOnInit(): void {
+    this.loaded = true;
+
     this.addUser({
       firstName: 'Ahmed',
       lastName: 'Rabie',
       age: 26,
-      address: {
-        street: '55 Mill st',
-        city: 'Miami',
-        state: 'FL',
-      },
+      // address: {
+      //   // street: '55 Mill st',
+      //   // city: 'Miami',
+      //   // state: 'FL',
+      // },
     });
   }
 
   addUser(user: User) {
+    this.showExtended = true;
     this.users.push(user);
   }
 }
