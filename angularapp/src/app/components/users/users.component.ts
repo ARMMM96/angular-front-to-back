@@ -7,6 +7,16 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    age: undefined,
+    address: {
+      street: '',
+      city: '',
+      state: '',
+    },
+  };
   users: User[] = [];
   showExtended: boolean = true;
   loaded: boolean = false;
