@@ -1,6 +1,12 @@
 <h2>Users</h2>
 <div class="d-grid">
-  <button [disabled]="!enableAdd" class="btn btn-lg btn-light mb-3">
+  <button
+    (click)="
+      addUser({ firstName: 'Mary', lastName: 'Jackson', isActive: true })
+    "
+    [disabled]="!enableAdd"
+    class="btn btn-lg btn-light mb-3"
+  >
     Add New User
   </button>
 </div>
