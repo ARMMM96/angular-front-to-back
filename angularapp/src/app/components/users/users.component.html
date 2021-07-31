@@ -1,10 +1,6 @@
 <h2>Users</h2>
 <div class="d-grid">
-  <button
-    [disabled]="!enableAdd"
-    class="btn btn-lg btn-block mb-3"
-    [ngClass]="currentClasses"
-  >
+  <button [disabled]="!enableAdd" class="btn btn-lg btn-light mb-3">
     Add New User
   </button>
 </div>
@@ -13,39 +9,22 @@
     class="card card-body mb-3"
     *ngFor="let user of users"
     [class.bg-light]="user.isActive"
-    [style.border]="user.isActive ? 'green 2px solid' : ''"
   >
-    <div class="row">
-      <div class="col-sm-4">
-        <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt="" />
-      </div>
-      <div class="col-sm-8">
-        <h3 [ngStyle]="currentStyles">
-          {{ user.firstName | uppercase }} {{ user.lastName | lowercase }}
-        </h3>
+    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
 
-        <ul class="list-group" *ngIf="showExtended && user.age && user.address">
-          <li class="list-group-item">Age: {{ user.age }}</li>
-          <li class="list-group-item">
-            Address: {{ user.address.street }} {{ user.address.city }}
-            {{ user.address.state }}
-          </li>
-          <li class="list-group-item">
-            Balance: {{ user.balance | currency: "GBP":"symbol" }} until
-            {{ 0.5 | percent }}
-          </li>
-          <li class="list-group-item">
-            Joined: {{ user.registered | date: "d/m/y" }}
-          </li>
-          <li class="list-group-item" ngNonBindable>
-            <pre>{{ 5 | number: "2.2" }}</pre>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <ul class="list-group" *ngIf="showExtended && user.age && user.address">
+      <li class="list-group-item">Age: {{ user.age }}</li>
+      <li class="list-group-item">
+        Address: {{ user.address.street }} {{ user.address.city }}
+        {{ user.address.state }}
+      </li>
+
+      <li class="list-group-item">
+        Joined: {{ user.registered | date: "d/m/y" }}
+      </li>
+    </ul>
   </li>
 </ul>
-<!-- <ng-template #noUsers> <h4>NO Users Found</h4></ng-template> -->
 
 <h4 *ngIf="users.length <= 0 && loaded">No Users Found</h4>
 <h4 *ngIf="!loaded">Loading Users.....</h4>
