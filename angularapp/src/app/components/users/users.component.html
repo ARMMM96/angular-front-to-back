@@ -1,14 +1,52 @@
-<h2>Users</h2>
-<div class="d-grid">
-  <button
-    (click)="
-      addUser({ firstName: 'Mary', lastName: 'Jackson', isActive: true })
-    "
-    [disabled]="!enableAdd"
-    class="btn btn-lg btn-light mb-3"
-  >
-    Add New User
-  </button>
+<button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3">
+  Add User
+</button>
+<div class="card card-body mb-3" *ngIf="showUserForm">
+  <h2>Add User</h2>
+  <form (submit)="onSubmit($event)">
+    <div class="form-grup mb-3">
+      <label>Frist Name</label>
+
+      <input
+        type="text"
+        class="form-control"
+        name="firstName"
+        (blur)="fireEvent($event)"
+      />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="lastName" />
+    </div>
+    <div class="form-group mb-3">
+      <label>Age</label>
+      <input type="number" class="form-control" name="age" />
+    </div>
+    <div class="form-group mb-3">
+      <label>Street Address</label>
+      <input type="text" class="form-control" name="street" />
+    </div>
+    <div class="form-group mb-3">
+      <label>City</label>
+      <input type="text" class="form-control" name="city" />
+    </div>
+    <div class="form-group mb-3">
+      <label>State</label>
+      <input type="text" class="form-control" name="state" />
+    </div>
+  </form>
+  <div class="d-grid mt-4">
+    <button
+      (click)="
+        addUser({ firstName: 'Mary', lastName: 'Jackson', isActive: true })
+      "
+      [disabled]="!enableAdd"
+      class="btn btn-lg btn-light mb-3"
+    >
+      Add New User
+    </button>
+  </div>
 </div>
 <ul class="list-unstyled" *ngIf="loaded && users.length > 0">
   <li
