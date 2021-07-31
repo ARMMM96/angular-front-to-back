@@ -13,13 +13,16 @@
     class="card card-body mb-3"
     *ngFor="let user of users"
     [class.bg-light]="user.isActive"
+    [style.border]="user.isActive ? 'green 2px solid' : ''"
   >
     <div class="row">
       <div class="col-sm-4">
         <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt="" />
       </div>
       <div class="col-sm-8">
-        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+        <h3 [ngStyle]="currentStyles">
+          {{ user.firstName }} {{ user.lastName }}
+        </h3>
 
         <ul class="list-group" *ngIf="showExtended && user.age && user.address">
           <li class="list-group-item">Age: {{ user.age }}</li>
