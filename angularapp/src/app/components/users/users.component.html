@@ -1,26 +1,22 @@
 <h2>Users</h2>
 <div class="d-grid">
-  <button [disabled]="!enableAdd" class="btn btn-light btn-lg btn-block mb-3">
+  <button
+    [disabled]="!enableAdd"
+    class="btn btn-lg btn-block mb-3"
+    [ngClass]="currentClasses"
+  >
     Add New User
   </button>
 </div>
 <ul class="list-unstyled" *ngIf="loaded && users.length > 0">
-  <li class="card card-body mb-3" *ngFor="let user of users">
+  <li
+    class="card card-body mb-3"
+    *ngFor="let user of users"
+    [class.bg-light]="user.isActive"
+  >
     <div class="row">
       <div class="col-sm-4">
         <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt="" />
-        <!-- <img
-          *ngIf="user.image"
-          class="img-fluid"
-          src="{{ user.image }}"
-          alt=""
-        /> -->
-        <!-- <img
-          *ngIf="user.image"
-          class="img-fluid"
-          bind-src="user.image"
-          alt=""
-        /> -->
       </div>
       <div class="col-sm-8">
         <h3>{{ user.firstName }} {{ user.lastName }}</h3>

@@ -10,7 +10,8 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = false;
+  enableAdd: boolean = true;
+  currentClasses = {};
 
   constructor() {}
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/1',
+        isActive: true,
       },
       {
         firstName: 'Kevin',
@@ -36,6 +38,7 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/2',
+        isActive: false,
       },
       {
         firstName: 'Karen',
@@ -47,13 +50,21 @@ export class UsersComponent implements OnInit {
           state: 'FL',
         },
         image: 'http://lorempixel.com/600/600/people/5',
+        isActive: true,
       },
     ];
     this.loaded = true;
+    this.setCurrentClasses();
   }
 
   addUser(user: User) {
     this.showExtended = true;
     this.users.push(user);
+  }
+  setCurrentClasses() {
+    this.currentClasses = {
+      'btn-success': this.enableAdd,
+      'big-text': this.showExtended,
+    };
   }
 }
