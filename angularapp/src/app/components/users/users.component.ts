@@ -7,20 +7,17 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  user: User = {
+  user = {
     firstName: '',
     lastName: '',
-    age: undefined,
-    address: {
-      street: '',
-      city: '',
-      state: '',
-    },
+    email: '',
+    isActive: false,
+    registered: '',
   };
   users: User[] = [];
   showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
   showUserForm: boolean = false;
 
   constructor() {}
@@ -29,12 +26,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'John',
         lastName: 'Doe',
-        age: 30,
-        address: {
-          street: '50 Main st',
-          city: 'Boston',
-          state: 'MA',
-        },
+        email: 'john@gmail.com',
         isActive: true,
         registered: new Date('01/02/2018 08:30:00'),
         hide: true,
@@ -42,12 +34,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Kevin',
         lastName: 'Johnson',
-        age: 34,
-        address: {
-          street: '20 School st',
-          city: 'Lynn',
-          state: 'MA',
-        },
+        email: 'kevin@gmail.com',
         isActive: false,
         registered: new Date('01/12/2017 06:20:00'),
         hide: true,
@@ -55,12 +42,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Karen',
         lastName: 'Williams',
-        age: 26,
-        address: {
-          street: '55 Mill st',
-          city: 'Miami',
-          state: 'FL',
-        },
+        email: 'Kearn@outlook.com',
         isActive: true,
         registered: new Date('11/02/2016 10:30:00'),
         hide: true,
@@ -69,15 +51,8 @@ export class UsersComponent implements OnInit {
     this.loaded = true;
   }
 
-  addUser(user: User) {
-    this.showExtended = true;
-    this.users.push(user);
-  }
   onSubmit(e: any) {
     console.log(123);
     e.preventDefault();
-  }
-  fireEvent(e: any) {
-    console.log(e.target.value);
   }
 }
