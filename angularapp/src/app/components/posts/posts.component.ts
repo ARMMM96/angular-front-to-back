@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 
 import { Post } from 'src/app/models/Posts';
+import { TimeoutError } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -10,6 +11,13 @@ import { Post } from 'src/app/models/Posts';
 })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
+  currentPost: Post = {
+    id: 0,
+    title: '',
+    body: '',
+  };
+
+  isEdit: boolean = false;
 
   constructor(private postService: PostService) {}
 
@@ -21,5 +29,9 @@ export class PostsComponent implements OnInit {
 
   onNewPost(post: Post) {
     this.posts.unshift(post);
+  }
+  editPost(post: Post) {
+    this.currentPost = post;
+    this.isEdit = true;
   }
 }

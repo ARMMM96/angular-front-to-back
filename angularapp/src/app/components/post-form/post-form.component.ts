@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 
 import { Post } from 'src/app/models/Posts';
@@ -10,6 +10,12 @@ import { Post } from 'src/app/models/Posts';
 })
 export class PostFormComponent implements OnInit {
   @Output() newPost: EventEmitter<Post> = new EventEmitter();
+  @Input() currentPost: Post = {
+    id: 0,
+    title: '',
+    body: '',
+  };
+  @Input() isEdit: boolean = false;
 
   constructor(private postService: PostService) {}
   ngOnInit(): void {}
@@ -22,5 +28,9 @@ export class PostFormComponent implements OnInit {
         this.newPost.emit(post);
       });
     }
+  }
+
+  updatePost() {
+    console.log(123);
   }
 }
